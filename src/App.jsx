@@ -4,6 +4,8 @@ import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 import Navbar from "./components/common/Navbar";
 import Footer from "./components/common/Footer";
 import Home from "./pages/Home"; // ✅ usually Pages are in /pages not /assets
+import About from "./Pages/About";
+
 
 const MainLayout = () => {
   return (
@@ -21,7 +23,7 @@ const router = createBrowserRouter([
     element: <MainLayout />,
     children: [
       { path: "/", element: <Home /> },
-      // You can add more routes here
+      {path:"/about",element:<About/>}
     ],
   },
 ]);
