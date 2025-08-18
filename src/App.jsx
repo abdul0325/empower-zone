@@ -1,17 +1,21 @@
-// App.jsx
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 
 import Navbar from "./components/common/Navbar";
 import Footer from "./components/common/Footer";
-import Home from "./pages/Home"; // ✅ usually Pages are in /pages not /assets
+import Home from "./pages/Home";
 import About from "./Pages/About";
 import Services from "./Pages/Services";
-import ContactPage from "./Pages/ContactPage";
 
+
+import Contact from "./components/ContactCom/Cantact";
+import Blogs from "./Pages/Blogs";
+import BlogDetail from "./components/Blogs/BlogDetail";
+import ScrollToTop from "./components/ScrollToTop";
 
 const MainLayout = () => {
   return (
     <>
+      <ScrollToTop />
       <Navbar />
       <Outlet />
       <Footer />
@@ -19,15 +23,21 @@ const MainLayout = () => {
   );
 };
 
-// ✅ Define routes
 const router = createBrowserRouter([
   {
     element: <MainLayout />,
     children: [
       { path: "/", element: <Home /> },
-      {path:"/about",element:<About/>},
-      {path:"/services",element:<Services/>},
-      {path:"/contactt",element:<ContactPage/>}
+
+      // ✅ Both versions of About, Services, ContactPage & Contact included
+      { path: "/about", element: <About /> },
+      { path: "/services", element: <Services /> },
+
+      { path: "/contact", element: <Contact /> },
+
+      // ✅ Blog pages
+      { path: "/blogs", element: <Blogs /> },
+      { path: "/blogDetail/:id", element: <BlogDetail /> },
     ],
   },
 ]);

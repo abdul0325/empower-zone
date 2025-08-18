@@ -38,7 +38,7 @@ export default function Navbar() {
         { href: "/about", label: "About" },
         { href: "/services", label: "Services", },
         
-        { href: "/blog", label: "Blog" },
+        { href: "/blogs", label: "Blog" },
     ];
 
     const serviceCategories = [
@@ -99,7 +99,7 @@ export default function Navbar() {
                 <div className="max-w-6xl   mx-auto px-8 py-4">
                     <div className={`transition-all  duration-700 rounded-2xl ${
                         scrolled
-                            ? "bg-white/90 backdrop-blur-lg shadow-lg border border-[#c0b688]/10"
+                            ? "bg-white/90 backdrop-blur-lg shadow-lg text-black border border-[#c0b688]/10"
                             : "bg-gradient-to-br from-[#b7e9dc] to-[#99b9b2]  backdrop-blur-sm border  border-gray-300"
                     } px-6 py-3`}>
                         <div className="flex justify-between  items-center">
@@ -211,7 +211,7 @@ export default function Navbar() {
                                                         <a
                                                             key={serviceIndex}
                                                             href={service.href}
-                                                            className="block px-4 py-2 text-white hover:text-[#9f8660] hover:bg-[#c0b688]/5 rounded-lg text-sm transition-all duration-300"
+                                                            className="block px-4 py-2 text-black hover:text-[#9f8660] hover:bg-[#c0b688]/5 rounded-lg text-sm transition-all duration-300"
                                                             onClick={() => setIsOpen(false)}
                                                             style={{ fontFamily: "'Inter', 'Helvetica Neue', sans-serif" }}
                                                         >
