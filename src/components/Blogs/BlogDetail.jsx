@@ -7,62 +7,62 @@ const BlogDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
 
-  const blogPosts = [
-    {
-      id: 1,
-      title: "Simplifying SNAP Applications in NYC",
-      excerpt: "Learn how Empower Zone helps individuals and families navigate the SNAP (food stamps) application process quickly and stress-free.",
-      date: "August 1, 2025",
-      category: "SNAP",
-      image: "/blogImage/snap.jpg",
-      author: "Empower Zone Team"
-    },
-    {
-      id: 2,
-      title: "Maximizing Your Cash Assistance Benefits",
-      excerpt: "Discover tips and strategies to ensure you receive the full benefits available through NYC's Cash Assistance programs.",
-      date: "July 15, 2025",
-      category: "Cash Assistance",
-      image: "/blogImage/cash.jpg",
-      author: "Empower Zone Team"
-    },
-    {
-      id: 3,
-      title: "WIC Benefits: What You Need to Know",
-      excerpt: "A complete guide to applying for WIC benefits, including eligibility, paperwork, and interview preparation with ease.",
-      date: "June 30, 2025",
-      category: "WIC",
-      image: "/blogImage/wic.jpg",
-      author: "Empower Zone Team"
-    },
-    {
-      id: 4,
-      title: "Medicaid Made Simple",
-      excerpt: "Understand the Medicaid application process in NYC and how Empower Zone supports you from start to finish.",
-      date: "June 10, 2025",
-      category: "Medicaid",
-      image: "/blogImage/medicaid.jpg",
-      author: "Empower Zone Team"
-    },
-    {
-      id: 5,
-      title: "Preparing for Your Benefits Interview",
-      excerpt: "Tips and guidance to feel confident and prepared for your SNAP, Cash Assistance, or Medicaid interviews.",
-      date: "May 25, 2025",
-      category: "Guides",
-      image: "/blogImage/interview.jpg",
-      author: "Empower Zone Team"
-    },
-    {
-      id: 6,
-      title: "Top 5 Mistakes to Avoid in Your Benefits Application",
-      excerpt: "Learn the most common mistakes applicants make and how to avoid them, ensuring a smoother approval process.",
-      date: "May 10, 2025",
-      category: "Tips & Advice",
-      image: "/blogImage/mistakes.jpg",
-      author: "Empower Zone Team"
-    }
-  ];
+   const blogPosts = [
+        {
+            id: 1,
+            title: "Simplifying SNAP Applications in NYC",
+            excerpt: "Learn how Empower Zone helps individuals and families navigate the SNAP (food stamps) application process quickly and stress-free.",
+            date: "August 1, 2025",
+            category: "SNAP",
+            image: "https://img.freepik.com/free-photo/happy-young-man-looking-smartphone_23-2148296680.jpg?ga=GA1.1.1146211304.1754028702&semt=ais_hybrid&w=740&q=80",
+            author: "Empower Zone Team"
+        },
+        {
+            id: 2,
+            title: "Maximizing Your Cash Assistance Benefits",
+            excerpt: "Discover tips and strategies to ensure you receive the full benefits available through NYC's Cash Assistance programs.",
+            date: "July 15, 2025",
+            category: "Cash Assistance",
+            image: "https://img.freepik.com/premium-photo/woman-counting-taxes-table-indoors_392895-15641.jpg?ga=GA1.1.1146211304.1754028702&semt=ais_hybrid&w=740&q=80",
+            author: "Empower Zone Team"
+        },
+        {
+            id: 3,
+            title: "WIC Benefits: What You Need to Know",
+            excerpt: "A complete guide to applying for WIC benefits, including eligibility, paperwork, and interview preparation.",
+            date: "June 30, 2025",
+            category: "WIC",
+            image: "https://img.freepik.com/premium-photo/happy-couple-recieve-good-news-unfolding-letter-kitchen-while-have-breakfast-home_662046-1796.jpg?ga=GA1.1.1146211304.1754028702&semt=ais_hybrid&w=740&q=80",
+            author: "Empower Zone Team"
+        },
+        {
+            id: 4,
+            title: "Medicaid Made Simple",
+            excerpt: "Understand the Medicaid application process in NYC and how Empower Zone supports you from start to finish.",
+            date: "June 10, 2025",
+            category: "Medicaid",
+            image: "https://img.freepik.com/premium-photo/midsection-man-using-laptop-table_1048944-16961967.jpg?ga=GA1.1.1146211304.1754028702&semt=ais_hybrid&w=740&q=80",
+            author: "Empower Zone Team"
+        },
+        {
+            id: 5,
+            title: "Preparing for Your Benefits Interview",
+            excerpt: "Tips and guidance to feel confident and prepared for your SNAP, Cash Assistance, or Medicaid interviews.",
+            date: "May 25, 2025",
+            category: "Guides",
+            image: "https://img.freepik.com/free-photo/three-business-professionals-having-discussion-office_23-2147857318.jpg?ga=GA1.1.1146211304.1754028702&semt=ais_hybrid&w=740&q=80",
+            author: "Empower Zone Team"
+        },
+        {
+            id: 6,
+            title: "Top 5 Mistakes to Avoid in Your Benefits Application",
+            excerpt: "Learn the most common mistakes applicants make and how to avoid them, ensuring a smoother approval process.",
+            date: "May 10, 2025",
+            category: "Tips & Advice",
+            image: "https://img.freepik.com/premium-photo/concept-satisfaction-good-feedback-rating-customer-review-happy-smile-relax-face-think-positive-assessment-world-mental-health-day-calm-mood-good-mental-health-good-mood_10221-60922.jpg?ga=GA1.1.1146211304.1754028702&semt=ais_hybrid&w=740&q=80",
+            author: "Empower Zone Team"
+        }
+    ];
 
 
   const blgpost = blogPosts.find(item => item.id === Number(id));
