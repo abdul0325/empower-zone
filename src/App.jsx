@@ -1,11 +1,11 @@
-// App.jsx
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 
 import Navbar from "./components/common/Navbar";
 import Footer from "./components/common/Footer";
-import Home from "./pages/Home"; // ✅ usually Pages are in /pages not /assets
+import Home from "./pages/Home";
 import About from "./Pages/About";
 import Services from "./Pages/Services";
+import Contact from "./components/home/Contact";
 
 
 const MainLayout = () => {
@@ -18,14 +18,14 @@ const MainLayout = () => {
   );
 };
 
-// ✅ Define routes
 const router = createBrowserRouter([
   {
     element: <MainLayout />,
     children: [
       { path: "/", element: <Home /> },
       {path:"/about",element:<About/>},
-      {path:"/services",element:<Services/>}
+      {path:"/services",element:<Services/>},
+      {path:"/contact",element:<Contact/>}
     ],
   },
 ]);
