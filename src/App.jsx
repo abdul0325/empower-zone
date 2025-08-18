@@ -5,7 +5,8 @@ import Footer from "./components/common/Footer";
 import Home from "./pages/Home";
 import About from "./Pages/About";
 import Services from "./Pages/Services";
-import Contact from "./components/home/Contact";
+import Contact from "./components/ContactCom/Cantact";
+import Blogs from "./Pages/Blogs";
 
 
 const MainLayout = () => {
@@ -25,7 +26,8 @@ const router = createBrowserRouter([
       { path: "/", element: <Home /> },
       {path:"/about",element:<About/>},
       {path:"/services",element:<Services/>},
-      {path:"/contact",element:<Contact/>}
+      {path:"/contact",element:<Contact/>},
+      {path:"/blogs",element:<Blogs/>},
     ],
   },
 ]);
