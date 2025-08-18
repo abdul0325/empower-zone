@@ -38,7 +38,7 @@ export default function Navbar() {
         { href: "/about", label: "About" },
         { href: "/services", label: "Services", hasDropdown: true },
         
-        { href: "/blog", label: "Blog" },
+        { href: "/blogs", label: "Blog" },
     ];
 
     const serviceCategories = [
