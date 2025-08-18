@@ -6,6 +6,7 @@ import Footer from "./components/common/Footer";
 import Home from "./pages/Home"; // ✅ usually Pages are in /pages not /assets
 import About from "./Pages/About";
 import Services from "./Pages/Services";
+import ContactPage from "./Pages/ContactPage";
 
 
 const MainLayout = () => {
@@ -25,7 +26,8 @@ const router = createBrowserRouter([
     children: [
       { path: "/", element: <Home /> },
       {path:"/about",element:<About/>},
-      {path:"/services",element:<Services/>}
+      {path:"/services",element:<Services/>},
+      {path:"/contactt",element:<ContactPage/>}
     ],
   },
 ]);
