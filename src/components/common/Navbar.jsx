@@ -36,7 +36,7 @@ export default function Navbar() {
     const navLinks = [
         { href: "/", label: "Home" },
         { href: "/about", label: "About" },
-        { href: "/services", label: "Services", hasDropdown: true },
+        { href: "/services", label: "Services", },
         
         { href: "/blog", label: "Blog" },
     ];
@@ -134,57 +134,12 @@ export default function Navbar() {
                                                     }`}
                                                     style={{ fontFamily: "'Inter', 'Helvetica Neue', sans-serif" }}
                                                 >
-                                                    <span className="text-black">{link.label}</span>
+                                                    <span className="text-white">{link.label}</span>
                                                     <ChevronDownIcon isOpen={servicesDropdownOpen} />
                                                 </button>
 
                                                 {/* Dropdown Menu */}
-                                                <div className={`absolute top-full left-0 mt-2 w-80 bg-white/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-[#c0b688]/20 overflow-hidden transition-all duration-300 transform ${
-                                                    servicesDropdownOpen 
-                                                        ? 'opacity-100 translate-y-0 visible' 
-                                                        : 'opacity-0 -translate-y-2 invisible'
-                                                }`}>
-                                                    <div className="p-6">
-                                                        <div className="mb-4">
-                                                            <h3 className="text-[#494c52] font-semibold text-base mb-1" style={{ fontFamily: "'Inter', 'Helvetica Neue', sans-serif" }}>
-                                                                Our Services
-                                                            </h3>
-                                                            <p className="text-[#9f8660] text-sm opacity-80" style={{ fontFamily: "'Inter', 'Helvetica Neue', sans-serif" }}>
-                                                                Comprehensive legal solutions
-                                                            </p>
-                                                        </div>
-                                                        <div className="space-y-2">
-                                                            {serviceCategories.map((service, serviceIndex) => (
-                                                                <a
-                                                                    key={serviceIndex}
-                                                                    href={service.href}
-                                                                    className="block p-3 rounded-xl hover:bg-[#c0b688]/10 transition-all duration-300 group"
-                                                                >
-                                                                    <div className="flex items-start space-x-3">
-                                                                        <div className="flex-shrink-0 w-2 h-2 bg-gradient-to-r from-[#9f8660] to-[#c0b688] rounded-full mt-2 opacity-60 group-hover:opacity-100 transition-opacity duration-300"></div>
-                                                                        <div>
-                                                                            <h4 className="text-[#494c52] font-medium text-sm mb-1 group-hover:text-[#9f8660] transition-colors duration-300" style={{ fontFamily: "'Inter', 'Helvetica Neue', sans-serif" }}>
-                                                                                {service.title}
-                                                                            </h4>
-                                                                            <p className="text-[#494c52] text-xs opacity-70 leading-relaxed" style={{ fontFamily: "'Inter', 'Helvetica Neue', sans-serif" }}>
-                                                                                {service.description}
-                                                                            </p>
-                                                                        </div>
-                                                                    </div>
-                                                                </a>
-                                                            ))}
-                                                        </div>
-                                                        <div className="mt-4 pt-4 border-t border-[#c0b688]/20">
-                                                            <a
-                                                                href="/services"
-                                                                className="flex items-center justify-center space-x-2 bg-gradient-to-r from-[#9f8660] to-[#c0b688] text-white px-4 py-2 rounded-xl text-sm font-medium transform hover:scale-105 transition-all duration-300"
-                                                                style={{ fontFamily: "'Inter', 'Helvetica Neue', sans-serif" }}
-                                                            >
-                                                                <span>View All Services</span>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                               
 
                                                 <div className="absolute inset-x-2 bottom-0 h-0.5 bg-gradient-to-r from-[#9f8660] to-[#c0b688] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 rounded-full"></div>
                                             </div>
@@ -193,7 +148,7 @@ export default function Navbar() {
                                                 href={link.href}
                                                 className={`relative px-4 py-2 rounded-lg text-sm font-medium tracking-wide transition-all duration-300 group ${
                                                     scrolled
-                                                        ? "text-[#494c52] hover:text-[#9f8660] hover:bg-[#c0b688]/5"
+                                                        ? "text-white hover:text-[#9f8660] hover:bg-[#c0b688]/5"
                                                         : "text-black hover:text-[#c0b688] hover:bg-white/5"
                                                 }`}
                                                 style={{ fontFamily: "'Inter', 'Helvetica Neue', sans-serif" }}
@@ -241,7 +196,7 @@ export default function Navbar() {
                                         <div>
                                             <button
                                                 onClick={() => setServicesDropdownOpen(!servicesDropdownOpen)}
-                                                className="w-full flex items-center justify-between px-4 py-3 text-[#494c52] hover:text-[#9f8660] hover:bg-[#c0b688]/5 rounded-xl text-sm font-medium transition-all duration-300 tracking-wide"
+                                                className="w-full flex items-center justify-between px-4 py-3 text-white hover:text-[#9f8660] hover:bg-[#c0b688]/5 rounded-xl text-sm font-medium transition-all duration-300 tracking-wide"
                                                 style={{ fontFamily: "'Inter', 'Helvetica Neue', sans-serif" }}
                                             >
                                                 <span>{link.label}</span>
@@ -256,7 +211,7 @@ export default function Navbar() {
                                                         <a
                                                             key={serviceIndex}
                                                             href={service.href}
-                                                            className="block px-4 py-2 text-[#494c52] hover:text-[#9f8660] hover:bg-[#c0b688]/5 rounded-lg text-sm transition-all duration-300"
+                                                            className="block px-4 py-2 text-white hover:text-[#9f8660] hover:bg-[#c0b688]/5 rounded-lg text-sm transition-all duration-300"
                                                             onClick={() => setIsOpen(false)}
                                                             style={{ fontFamily: "'Inter', 'Helvetica Neue', sans-serif" }}
                                                         >
