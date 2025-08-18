@@ -7,7 +7,7 @@ import About from "./Pages/About";
 import Services from "./Pages/Services";
 import Contact from "./components/ContactCom/Cantact";
 import Blogs from "./Pages/Blogs";
-
+import BlogDetail from './components/Blogs/BlogDetail'
 
 const MainLayout = () => {
   return (
@@ -28,6 +28,7 @@ const router = createBrowserRouter([
       {path:"/services",element:<Services/>},
       {path:"/contact",element:<Contact/>},
       {path:"/blogs",element:<Blogs/>},
+      {path:"/blogDetail/:id",element:<BlogDetail/>},
     ],
   },
 ]);
