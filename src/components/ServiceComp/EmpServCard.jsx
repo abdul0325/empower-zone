@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { FaPiggyBank, FaBell, FaHeadset, FaChartLine } from "react-icons/fa";
-
+ import AOS from "aos"
+ import "aos/dist/aos.css"
 const ServCard = [
   {
     id: 1,
@@ -29,17 +30,33 @@ const ServCard = [
 ];
 
 const EmpServCard = () => {
+    useEffect(()=>{
+        AOS.init({
+            duration:1000,
+            once:true,
+            offset:100,
+        })
+    })
   return (
-    <div className="min-h-screen px-6 py-16 bg-gradient-to-b from-gray-50 to-gray-100">
+    <div className="min-h-screen px-6 py-16 bg-gradient-to-b from-gray-50 to-gray-100"
+    style={{
+        backgroundImage:"url('https://images.unsplash.com/photo-1754901350791-04eff8b6289c?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwzOXx8fGVufDB8fHx8fA%3D%3D')",
+        backgroundAttachment:"fixed",
+        backgroundRepeat:"no-repeat",
+        backgroundSize:"cover",
+        backgroundPosition:"center"
+    }}
+    >
       {/* Title */}
-      <h1 className="text-center mb-14 font-bold text-4xl text-gray-800">
-        Our <span className="text-[#5E9EA8]">Services</span>
+      <h1 className="text-center mb-14 font-bold text-4xl text-white">
+        Our <span className="">Services</span>
       </h1>
 
       {/* Services Grid */}
       <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 max-w-6xl mx-auto">
         {ServCard.map((item) => (
           <div
+          data-aos="fade-up"
             key={item.id}
             className="bg-white rounded-2xl shadow-md p-8 flex flex-col items-center text-center 
               transform transition duration-300 hover:-translate-y-3 hover:shadow-2xl group"

@@ -6,18 +6,17 @@ import { Scale, Phone, Mail, MapPin, Globe, Award, Building2, Users, Shield, Che
 const Footer = () => {
   const quickLinks = [
     { href: "/", label: "Home" },
-    { href: "/about", label: "About Us" },
-    { href: "/services", label: "Services" },
-    { href: "/whyus", label: "Why Choose Us" },
+    { href: "/about", label: "About " },
+    { href: "/services", label: "Services" },  
     { href: "/blog", label: "Blog" },
     { href: "/contact", label: "Contact" }
   ];
 
   const services = [
-    { href: "/corporate", label: "Corporate Law", icon: Building2 },
-    { href: "/governorg", label: "Government Relations", icon: Shield },
-    { href: "/IndvidualCustomer", label: "Individual Services", icon: Users },
-    { href: "/legalsupport", label: "Legal Support", icon: Scale }
+    { href: "/services", label: "Financial Guidance", icon: Building2 },
+    { href: "/services", label: "Benefits Alert", icon: Shield },
+    { href: "/services", label: "Support Desk", icon: Users },
+    { href: "/services", label: "Fund Tracker", icon: Scale }
   ];
 
   const contactInfo = [

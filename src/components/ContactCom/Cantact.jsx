@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
+import emailjs from "emailjs-com"; // ✅ Import EmailJS
 import {
   Mail,
   Phone,
@@ -15,6 +16,7 @@ const Contact = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    phone: "",
     subject: "",
     message: "",
   });
@@ -48,10 +50,22 @@ const Contact = () => {
     setFormStatus({ submitting: true, submitted: false, error: null });
 
     try {
-      await new Promise((resolve) => setTimeout(resolve, 1500));
+      await emailjs.send(
+        "service_0gnln6l",
+        "template_m1lq3vr",
+        {
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          subject: formData.subject,
+          message: formData.message,
+          time: new Date().toLocaleString(),
+        },
+        "44F19eKvZXO5ilpy8"
+      );
 
       setFormStatus({ submitting: false, submitted: true, error: null });
-      setFormData({ name: "", email: "", subject: "", message: "" });
+      setFormData({ name: "", email: "", phone: "", subject: "", message: "" });
 
       setTimeout(() => {
         setFormStatus((prev) => ({ ...prev, submitted: false }));
@@ -62,6 +76,7 @@ const Contact = () => {
         submitted: false,
         error: "Failed to send message. Please try again.",
       });
+      console.error("EmailJS Error:", error);
     }
   };
 
@@ -84,6 +99,7 @@ const Contact = () => {
       </motion.div>
 
       <div className="grid lg:grid-cols-2 gap-10 lg:gap-14 max-w-6xl mx-auto">
+        {/* Contact Form */}
         <motion.div
           initial={{ opacity: 0, x: -40 }}
           animate={{ opacity: 1, x: 0 }}
@@ -116,82 +132,57 @@ const Contact = () => {
           ) : null}
 
           <form className="space-y-4 sm:space-y-5" onSubmit={handleSubmit}>
-            <div>
-              <label htmlFor="name" className="sr-only">
-                Your Name
-              </label>
-              <input
-                id="name"
-                type="text"
-                name="name"
-                placeholder="Your Name"
-                value={formData.name}
-                onChange={handleChange}
-                required
-                className="w-full border border-gray-200 rounded-xl p-3 text-sm sm:text-base focus:ring-2 focus:ring-[#A4CBC2] focus:border-transparent outline-none transition-all duration-200"
-              />
-            </div>
-            <div>
-              <label htmlFor="email" className="sr-only">
-                Your Email
-              </label>
-              <input
-                id="email"
-                type="email"
-                name="email"
-                placeholder="Your Email"
-                value={formData.email}
-                onChange={handleChange}
-                required
-                className="w-full border border-gray-200 rounded-xl p-3 text-sm sm:text-base focus:ring-2 focus:ring-[#A4CBC2] focus:border-transparent outline-none transition-all duration-200"
-              />
-            </div>
-            <div>
-              <label htmlFor="phone" className="sr-only">
-                Your Phone Number
-              </label>
-              <input
-                id="phone"
-                type="tel"
-                name="phone"
-                placeholder="Your Phone Number"
-                value={formData.phone}
-                onChange={handleChange}
-                required
-                className="w-full border border-gray-200 rounded-xl p-3 text-sm sm:text-base focus:ring-2 focus:ring-[#A4CBC2] focus:border-transparent outline-none transition-all duration-200"
-              />
-            </div>
+            <input
+              id="name"
+              type="text"
+              name="name"
+              placeholder="Your Name"
+              value={formData.name}
+              onChange={handleChange}
+              required
+              className="w-full border border-gray-200 rounded-xl p-3 text-sm sm:text-base focus:ring-2 focus:ring-[#A4CBC2] focus:border-transparent outline-none transition-all duration-200"
+            />
+            <input
+              id="email"
+              type="email"
+              name="email"
+              placeholder="Your Email"
+              value={formData.email}
+              onChange={handleChange}
+              required
+              className="w-full border border-gray-200 rounded-xl p-3 text-sm sm:text-base focus:ring-2 focus:ring-[#A4CBC2] focus:border-transparent outline-none transition-all duration-200"
+            />
+            <input
+              id="phone"
+              type="tel"
+              name="phone"
+              placeholder="Your Phone Number"
+              value={formData.phone}
+              onChange={handleChange}
+              required
+              className="w-full border border-gray-200 rounded-xl p-3 text-sm sm:text-base focus:ring-2 focus:ring-[#A4CBC2] focus:border-transparent outline-none transition-all duration-200"
+            />
+            <input
+              id="subject"
+              type="text"
+              name="subject"
+              placeholder="Subject"
+              value={formData.subject}
+              onChange={handleChange}
+              required
+              className="w-full border border-gray-200 rounded-xl p-3 text-sm sm:text-base focus:ring-2 focus:ring-[#A4CBC2] focus:border-transparent outline-none transition-all duration-200"
+            />
+            <textarea
+              id="message"
+              rows="4"
+              name="message"
+              placeholder="Your Message"
+              value={formData.message}
+              onChange={handleChange}
+              required
+              className="w-full border border-gray-200 rounded-xl p-3 text-sm sm:text-base focus:ring-2 focus:ring-[#A4CBC2] focus:border-transparent outline-none transition-all duration-200"
+            ></textarea>
 
-            <div>
-              <label htmlFor="subject" className="sr-only">
-                Subject
-              </label>
-              <input
-                id="subject"
-                type="text"
-                name="subject"
-                placeholder="Subject"
-                value={formData.subject}
-                onChange={handleChange}
-                required
-                className="w-full border border-gray-200 rounded-xl p-3 text-sm sm:text-base focus:ring-2 focus:ring-[#A4CBC2] focus:border-transparent outline-none transition-all duration-200"
-              />
-            </div>
-            <div>
-              <label htmlFor="message" className="sr-only">
-                Your Message
-              </label>
-              <textarea
-                id="message"
-                rows="4"
-                name="message"
-                placeholder="Your Message"
-                value={formData.message}
-                onChange={handleChange}
-                required
-                className="w-full border border-gray-200 rounded-xl p-3 text-sm sm:text-base focus:ring-2 focus:ring-[#A4CBC2] focus:border-transparent outline-none transition-all duration-200"
-              ></textarea>
-            </div>
             <motion.button
               type="submit"
               whileHover={{ scale: 1.02 }}
@@ -237,6 +228,7 @@ const Contact = () => {
           </form>
         </motion.div>
 
+        {/* Right Side Info (unchanged) */}
         <motion.div
           initial={{ opacity: 0, x: 40 }}
           animate={{ opacity: 1, x: 0 }}
@@ -255,13 +247,13 @@ const Contact = () => {
               {
                 icon: Mail,
                 title: "Email Us",
-                text: "contact@gmail.com",
+                text: "empowerzoneservices@gmail.com",
                 link: "mailto:contact@yourcompany.com",
               },
               {
                 icon: Phone,
                 title: "Call Us",
-                text: "+92 3203036988",
+                text: "+1 (718) 757-6928",
                 link: "tel:+923001234567",
               },
               {
@@ -284,11 +276,13 @@ const Contact = () => {
                 <div className="flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 bg-[#A4CBC2]/10 rounded-full">
                   <info.icon className="w-6 h-6 sm:w-7 sm:h-7 text-[#A4CBC2] group-hover:text-[#A58F67] transition-colors duration-300" />
                 </div>
-                <div className="text-left">
+                <div className="text-left max-w-[300px] break-all">
+                  {" "}
+                  {/* Adjust as needed */}
                   <h3 className="font-semibold text-gray-800 text-sm sm:text-base">
                     {info.title}
                   </h3>
-                  <p className="text-gray-600 text-xs sm:text-sm mt-1">
+                  <p className="text-gray-600 text-xs sm:text-sm mt-1 ">
                     {info.text}
                   </p>
                 </div>

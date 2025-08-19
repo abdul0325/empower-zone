@@ -5,13 +5,17 @@ import Footer from "./components/common/Footer";
 import Home from "./pages/Home";
 import About from "./Pages/About";
 import Services from "./Pages/Services";
+
+
 import Contact from "./components/ContactCom/Cantact";
 import Blogs from "./Pages/Blogs";
-import BlogDetail from './components/Blogs/BlogDetail'
+import BlogDetail from "./components/Blogs/BlogDetail";
+import ScrollToTop from "./components/ScrollToTop";
 
 const MainLayout = () => {
   return (
     <>
+      <ScrollToTop />
       <Navbar />
       <Outlet />
       <Footer />
@@ -24,11 +28,16 @@ const router = createBrowserRouter([
     element: <MainLayout />,
     children: [
       { path: "/", element: <Home /> },
-      {path:"/about",element:<About/>},
-      {path:"/services",element:<Services/>},
-      {path:"/contact",element:<Contact/>},
-      {path:"/blogs",element:<Blogs/>},
-      {path:"/blogDetail/:id",element:<BlogDetail/>},
+
+      // ✅ Both versions of About, Services, ContactPage & Contact included
+      { path: "/about", element: <About /> },
+      { path: "/services", element: <Services /> },
+
+      { path: "/contact", element: <Contact /> },
+
+      // ✅ Blog pages
+      { path: "/blogs", element: <Blogs /> },
+      { path: "/blogDetail/:id", element: <BlogDetail /> },
     ],
   },
 ]);
