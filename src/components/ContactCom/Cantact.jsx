@@ -1,15 +1,14 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
-import emailjs from "emailjs-com"; // ✅ Import EmailJS
+import emailjs from "emailjs-com";
 import {
   Mail,
   Phone,
-  MapPin,
   Send,
   Clock,
-  Twitter,
-  Linkedin,
-  Github,
+  MessageCircle,
+  Users,
+  Shield
 } from "lucide-react";
 
 const Contact = () => {
@@ -17,7 +16,7 @@ const Contact = () => {
     name: "",
     email: "",
     phone: "",
-    subject: "",
+    program: "",
     message: "",
   });
 
@@ -57,7 +56,7 @@ const Contact = () => {
           name: formData.name,
           email: formData.email,
           phone: formData.phone,
-          subject: formData.subject,
+          program: formData.program,
           message: formData.message,
           time: new Date().toLocaleString(),
         },
@@ -65,7 +64,7 @@ const Contact = () => {
       );
 
       setFormStatus({ submitting: false, submitted: true, error: null });
-      setFormData({ name: "", email: "", phone: "", subject: "", message: "" });
+      setFormData({ name: "", email: "", phone: "", program: "", message: "" });
 
       setTimeout(() => {
         setFormStatus((prev) => ({ ...prev, submitted: false }));
@@ -74,7 +73,7 @@ const Contact = () => {
       setFormStatus({
         submitting: false,
         submitted: false,
-        error: "Failed to send message. Please try again.",
+        error: "Failed to send message. Please try again or call us directly.",
       });
       console.error("EmailJS Error:", error);
     }
@@ -90,11 +89,10 @@ const Contact = () => {
         className="text-center mb-12 sm:mb-16"
       >
         <h1 className="text-3xl sm:text-4xl md:text-5xl pt-20 font-bold text-gray-800">
-          Contact <span className="text-[#A7CFC5]">Us</span>
+          Get Your <span className="text-[#5E9EA8]">Benefits Started</span>
         </h1>
         <p className="text-gray-600 max-w-2xl mx-auto mt-3 sm:mt-4 text-base sm:text-lg">
-          Have questions or want to discuss a project? Reach out—we're here to
-          help.
+          Take one small step — and we'll handle the rest. No stress, no endless forms, no waiting on hold.
         </p>
       </motion.div>
 
@@ -107,8 +105,8 @@ const Contact = () => {
           className="bg-white p-6 sm:p-8 md:p-10 rounded-2xl sm:rounded-3xl shadow-lg border border-gray-100"
         >
           <h2 className="text-xl sm:text-2xl font-semibold text-gray-800 mb-5 sm:mb-6 flex items-center gap-2 group">
-            <Send className="w-5 h-5 sm:w-6 sm:h-6 text-[#A4CBC2] group-hover:text-[#A58F67] transition-colors duration-300" />
-            Send Us a Message
+            <Send className="w-5 h-5 sm:w-6 sm:h-6 text-[#5E9EA8] group-hover:text-[#4A8D99] transition-colors duration-300" />
+            Free Benefits Consultation
           </h2>
 
           {formStatus.submitted ? (
@@ -118,8 +116,7 @@ const Contact = () => {
               transition={{ duration: 0.3 }}
               className="bg-green-50 border border-green-200 text-green-700 px-4 py-3 rounded-lg mb-4"
             >
-              ✅ Thank you! Your message has been sent successfully. We'll get
-              back to you soon.
+              ✅ Thank you! We've received your information and will contact you within 24 hours to start your benefits process.
             </motion.div>
           ) : formStatus.error ? (
             <motion.div
@@ -136,21 +133,21 @@ const Contact = () => {
               id="name"
               type="text"
               name="name"
-              placeholder="Your Name"
+              placeholder="Your Full Name"
               value={formData.name}
               onChange={handleChange}
               required
-              className="w-full border border-gray-200 rounded-xl p-3 text-sm sm:text-base focus:ring-2 focus:ring-[#A4CBC2] focus:border-transparent outline-none transition-all duration-200"
+              className="w-full border border-gray-200 rounded-xl p-3 text-sm sm:text-base focus:ring-2 focus:ring-[#5E9EA8] focus:border-transparent outline-none transition-all duration-200"
             />
             <input
               id="email"
               type="email"
               name="email"
-              placeholder="Your Email"
+              placeholder="Your Email Address"
               value={formData.email}
               onChange={handleChange}
               required
-              className="w-full border border-gray-200 rounded-xl p-3 text-sm sm:text-base focus:ring-2 focus:ring-[#A4CBC2] focus:border-transparent outline-none transition-all duration-200"
+              className="w-full border border-gray-200 rounded-xl p-3 text-sm sm:text-base focus:ring-2 focus:ring-[#5E9EA8] focus:border-transparent outline-none transition-all duration-200"
             />
             <input
               id="phone"
@@ -160,27 +157,35 @@ const Contact = () => {
               value={formData.phone}
               onChange={handleChange}
               required
-              className="w-full border border-gray-200 rounded-xl p-3 text-sm sm:text-base focus:ring-2 focus:ring-[#A4CBC2] focus:border-transparent outline-none transition-all duration-200"
+              className="w-full border border-gray-200 rounded-xl p-3 text-sm sm:text-base focus:ring-2 focus:ring-[#5E9EA8] focus:border-transparent outline-none transition-all duration-200"
             />
-            <input
-              id="subject"
-              type="text"
-              name="subject"
-              placeholder="Subject"
-              value={formData.subject}
+            
+            <select
+              id="program"
+              name="program"
+              value={formData.program}
               onChange={handleChange}
               required
-              className="w-full border border-gray-200 rounded-xl p-3 text-sm sm:text-base focus:ring-2 focus:ring-[#A4CBC2] focus:border-transparent outline-none transition-all duration-200"
-            />
+              className="w-full border border-gray-200 rounded-xl p-3 text-sm sm:text-base focus:ring-2 focus:ring-[#5E9EA8] focus:border-transparent outline-none transition-all duration-200"
+            >
+              <option value="">Select Program You Need Help With</option>
+              <option value="SNAP">SNAP (Food Stamps)</option>
+              <option value="Medicaid">Medicaid</option>
+              <option value="Cash Assistance">Cash Assistance</option>
+              <option value="WIC">WIC Program</option>
+              <option value="Denial Appeal">Denial Appeal</option>
+              <option value="Multiple Programs">Multiple Programs</option>
+              <option value="Not Sure">Not Sure - Need Guidance</option>
+            </select>
+
             <textarea
               id="message"
               rows="4"
               name="message"
-              placeholder="Your Message"
+              placeholder="Tell us about your situation or any questions you have..."
               value={formData.message}
               onChange={handleChange}
-              required
-              className="w-full border border-gray-200 rounded-xl p-3 text-sm sm:text-base focus:ring-2 focus:ring-[#A4CBC2] focus:border-transparent outline-none transition-all duration-200"
+              className="w-full border border-gray-200 rounded-xl p-3 text-sm sm:text-base focus:ring-2 focus:ring-[#5E9EA8] focus:border-transparent outline-none transition-all duration-200"
             ></textarea>
 
             <motion.button
@@ -188,7 +193,7 @@ const Contact = () => {
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.97 }}
               disabled={formStatus.submitting}
-              className={`w-full bg-gradient-to-r from-[#A4CBC2] to-[#7AA898] text-white font-semibold py-3 sm:py-3.5 rounded-xl shadow-md flex items-center justify-center gap-2 text-sm sm:text-base ${
+              className={`w-full bg-gradient-to-r from-[#5E9EA8] to-[#4A8D99] text-white font-semibold py-3 sm:py-3.5 rounded-xl shadow-md flex items-center justify-center gap-2 text-sm sm:text-base ${
                 formStatus.submitting ? "opacity-80 cursor-not-allowed" : ""
               }`}
             >
@@ -216,50 +221,60 @@ const Contact = () => {
                       3.042 1.135 5.824 3 7.938l3-2.647z"
                     ></path>
                   </svg>
-                  Sending...
+                  Submitting...
                 </>
               ) : (
                 <>
-                  <Send className="w-4 h-4 sm:w-5 sm:h-5 transition-colors duration-300 group-hover:text-[#A58F67]" />
-                  Send Message
+                  <Send className="w-4 h-4 sm:w-5 sm:h-5" />
+                  Get Free Consultation
                 </>
               )}
             </motion.button>
           </form>
         </motion.div>
 
-        {/* Right Side Info (unchanged) */}
         <motion.div
           initial={{ opacity: 0, x: 40 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.7 }}
           className="flex flex-col gap-6 sm:gap-8"
         >
-          {/* Info Cards */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6">
             {[
               {
-                icon: MapPin,
-                title: "Our Location",
-                text: "Bahawalpur, Punjab, Pakistan",
-                link: "https://maps.google.com/?q=Bahawalpur,Punjab,Pakistan",
+                icon: Phone,
+                title: "Call Us Now",
+                text: "+1 (718) 757-6928",
+                link: "tel:+17187576928",
+              },
+              {
+                icon: MessageCircle,
+                title: "WhatsApp",
+                text: "Message us directly",
+                link: "https://wa.me/17187576928",
               },
               {
                 icon: Mail,
                 title: "Email Us",
-                text: "contact@gmail.com",
-                link: "mailto:contact@yourcompany.com",
-              },
-              {
-                icon: Phone,
-                title: "Call Us",
-                text: "+92 3203036988",
-                link: "tel:+923001234567",
+                text: "EmpowerZoneServices@gmail.com",
+                link: "mailto:EmpowerZoneServices@gmail.com",
               },
               {
                 icon: Clock,
                 title: "Working Hours",
-                text: "Mon–Fri:9AM–6PM",
+                text: "Mon–Fri: 9AM–6PM EST",
+                link: null,
+              },
+              {
+                icon: Users,
+                title: "Service Area",
+                text: "Serving New York Families",
+                link: null,
+              },
+              {
+                icon: Shield,
+                title: "Confidential",
+                text: "100% Private & Secure",
                 link: null,
               },
             ].map((info, i) => (
@@ -270,11 +285,11 @@ const Contact = () => {
                 rel="noopener noreferrer"
                 whileHover={{ y: -5 }}
                 className={`flex items-center gap-3 sm:gap-4 bg-white p-4 sm:p-5 rounded-xl sm:rounded-2xl shadow-md border border-gray-100 transition-all duration-300 ${
-                  info.link ? "hover:shadow-lg" : "cursor-default "
+                  info.link ? "hover:shadow-lg" : "cursor-default"
                 } group`}
               >
-                <div className="flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 bg-[#A4CBC2]/10 rounded-full">
-                  <info.icon className="w-6 h-6 sm:w-7 sm:h-7 text-[#A4CBC2] group-hover:text-[#A58F67] transition-colors duration-300" />
+                <div className="flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 bg-[#5E9EA8]/10 rounded-full">
+                  <info.icon className="w-6 h-6 sm:w-7 sm:h-7 text-[#5E9EA8] group-hover:text-[#4A8D99] transition-colors duration-300" />
                 </div>
                 <div className="text-left">
                   <h3 className="font-semibold text-gray-800 text-sm sm:text-base">
@@ -288,60 +303,27 @@ const Contact = () => {
             ))}
           </div>
 
-          {/* Google Map */}
-          <div className="overflow-hidden rounded-2xl sm:rounded-3xl shadow-lg border border-gray-200">
-            <iframe
-              title="Google Map"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3443.4454802545156!2d71.67828987538242!3d29.39560277526056!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x393b9d6db04a3d6b%3A0x5a0dff7df1b91a7e!2sBahawalpur%2C%20Punjab%2C%20Pakistan!5e0!3m2!1sen!2s!4v1692891234567!5m2!1sen!2s"
-              width="100%"
-              height="200"
-              className="sm:h-[250px]"
-              style={{ border: 0 }}
-              allowFullScreen=""
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-            ></iframe>
-          </div>
-
-          {/* Social Links */}
-          <div className="flex flex-col items-center sm:items-start gap-4">
-            <h3 className="text-gray-700 font-medium text-sm sm:text-base">
-              Connect with us
-            </h3>
-            <div className="flex gap-4">
-              {[
-                {
-                  icon: Twitter,
-                  url: "https://twitter.com/yourcompany",
-                  label: "Twitter",
-                },
-                {
-                  icon: Linkedin,
-                  url: "https://linkedin.com/company/yourcompany",
-                  label: "LinkedIn",
-                },
-                {
-                  icon: Github,
-                  url: "https://github.com/yourcompany",
-                  label: "GitHub",
-                },
-              ].map((social, i) => (
-                <motion.a
-                  key={i}
-                  href={social.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  whileHover={{ y: -3, scale: 1.1 }}
-                  className="p-2.5 sm:p-3 rounded-full bg-gray-50 text-gray-600 hover:bg-[#A58F67]/10 transition-all duration-300 group"
-                  aria-label={`Visit our ${social.label} profile`}
-                >
-                  <social.icon
-                    size={18}
-                    className="sm:w-5 sm:h-5 group-hover:text-[#A58F67] transition-colors duration-300"
-                  />
-                </motion.a>
-              ))}
-            </div>
+          {/* Why Choose Us Card */}
+          <div className="bg-[#5E9EA8]/5 rounded-xl p-6 border border-[#5E9EA8]/20">
+            <h3 className="font-semibold text-gray-800 mb-3">Why Choose Us?</h3>
+            <ul className="text-sm text-gray-600 space-y-2">
+              <li className="flex items-center gap-2">
+                <div className="w-2 h-2 bg-[#5E9EA8] rounded-full"></div>
+                No upfront fees - pay only when approved
+              </li>
+              <li className="flex items-center gap-2">
+                <div className="w-2 h-2 bg-[#5E9EA8] rounded-full"></div>
+                98% success rate with applications
+              </li>
+              <li className="flex items-center gap-2">
+                <div className="w-2 h-2 bg-[#5E9EA8] rounded-full"></div>
+                Bilingual support (English & Spanish)
+              </li>
+              <li className="flex items-center gap-2">
+                <div className="w-2 h-2 bg-[#5E9EA8] rounded-full"></div>
+                Authorized representation with agencies
+              </li>
+            </ul>
           </div>
         </motion.div>
       </div>

@@ -2,24 +2,30 @@ import React, { useEffect, useState } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { Link } from "react-router-dom";
-const Hero = () => {
-  const Aray = [
+
+const ServicesHero = () => {
+  const services = [
     {
       id: 1,
-      name: "Empower Zone Services",
-      desc: "Know About the Services of BEST TRUSTED PLATFORM",
-      about: "We provide trusted, professional, and client-focused services to meet your goals effectively.",
-      bgimg:
-        "https://images.unsplash.com/photo-1755216007736-9920ec4d07f3?w=1200&auto=format&fit=crop&q=60",
+      name: "SNAP Benefits Assistance",
+      desc: "MAXIMUM NUTRITION SUPPORT FOR YOUR FAMILY",
+      about: "We ensure you receive the maximum food stamp benefits you're entitled to with our expert application assistance.",
+      bgimg: "https://images.unsplash.com/photo-1507048331197-7d4ac70811cf?w=1200&auto=format&fit=crop&q=80",
     },
     {
       id: 2,
-      name: "Empower Zone Solutions",
-      desc: "Your Trusted Partner in Excellence",
-      about: "Our goal is to empower businesses with innovative solutions and reliable expertise.",
-      bgimg:
-        "https://images.unsplash.com/photo-1754430544039-9da4dc746d2a?w=1200&auto=format&fit=crop&q=60",
+      name: "Medicaid & Healthcare",
+      desc: "HEALTHCARE COVERAGE MADE SIMPLE",
+      about: "Get the healthcare coverage you need without the confusing paperwork and denial headaches.",
+      bgimg: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=1200&auto=format&fit=crop&q=80",
     },
+    {
+      id: 3,
+      name: "Cash Assistance Programs",
+      desc: "FINANCIAL SUPPORT WHEN YOU NEED IT MOST",
+      about: "Emergency financial help for rent, bills, and daily expenses with guaranteed maximum benefits.",
+      bgimg: "https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?w=1200&auto=format&fit=crop&q=80",
+    }
   ];
 
   const [current, setCurrent] = useState(0);
@@ -27,10 +33,10 @@ const Hero = () => {
   // Auto Slide
   useEffect(() => {
     const timer = setInterval(() => {
-      setCurrent((prev) => (prev + 1) % Aray.length);
+      setCurrent((prev) => (prev + 1) % services.length);
     }, 5000);
     return () => clearInterval(timer);
-  }, [Aray.length]);
+  }, [services.length]);
 
   useEffect(() => {
     AOS.init({
@@ -42,84 +48,100 @@ const Hero = () => {
   }, []);
 
   return (
-    <section className="relative w-full min-h-screen overflow-hidden pt-25">
+    <section className="relative w-full min-h-screen overflow-hidden">
       {/* Background Image */}
       <div className="absolute inset-0 transition-all duration-1000 ease-in-out">
         <img
-          src={Aray[current].bgimg}
-          alt="carousel bg"
+          src={services[current].bgimg}
+          alt={services[current].name}
           className="w-full h-full object-cover transition-all duration-1000"
+          loading="eager"
         />
-        <div className="absolute inset-0 bg-gradient-to-br from-[#302641]/60 via-[#616564]/50 to-[#5E9EA8]/45"></div>
-        <div className="absolute inset-0 bg-black/30"></div>
-        <div className="absolute inset-0 bg-gradient-to-t from-[#302641]/70 via-transparent to-[#616564]/50"></div>
-      </div>
-
-      {/* Floating Particles */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-20 left-10 w-2 h-2 bg-[#5E9EA8] rounded-full animate-pulse opacity-40"></div>
-        <div className="absolute top-40 right-20 w-1 h-1 bg-[#302641] rounded-full animate-pulse opacity-30 delay-1000"></div>
-        <div className="absolute bottom-32 left-32 w-3 h-3 bg-[#616564] rounded-full animate-pulse opacity-35 delay-500"></div>
-        <div className="absolute top-1/3 right-1/4 w-1.5 h-1.5 bg-white rounded-full animate-pulse opacity-25 delay-700"></div>
+        <div className="absolute inset-0 bg-[#5E9EA8] opacity-90 mix-blend-multiply"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-gray-900/40 to-transparent"></div>
       </div>
 
       {/* Centered Content */}
       <div className="relative z-10 flex items-center justify-center min-h-screen px-4 sm:px-6 lg:px-8">
-        <div className="max-w-5xl mx-auto text-center">
-          {/* Title */}
-          <div className="mb-8 sm:mb-12">
-            <div className="relative">
-              <p
-                className="text-xl sm:text-3xl md:text-4xl lg:text-5xl text-white font-light tracking-[0.2em] mb-2 uppercase"
-                style={{
-                  fontFamily: "'Playfair Display', 'Georgia', serif",
-                  textShadow: "0 2px 10px rgba(0,0,0,0.5)",
-                }}
-              >
-                {Aray[current].name}
-              </p>
-              <div
-                data-aos="fade-down"
-                className="flex items-center justify-center space-x-2 sm:space-x-3 mt-3 sm:mt-4"
-              >
-                <div className="w-8 sm:w-12 h-0.5 bg-gradient-to-r from-transparent to-[#5E9EA8]"></div>
-                <div
-                  className=" text-white uppercase text-sm sm:text-base font-light tracking-[0.3em]"
-                  style={{ fontFamily: "'Cinzel', serif" }}
-                >
-                  {Aray[current].desc}
-                </div>
-                <div className="w-8 sm:w-12 h-0.5 bg-gradient-to-l from-transparent to-[#5E9EA8]"></div>
-              </div>
-            </div>
+        <div className="max-w-4xl mx-auto text-center">
+          
+          {/* Tagline */}
+          <div 
+            data-aos="fade-down"
+            className="bg-white/20 backdrop-blur-sm text-white px-5 py-2 rounded-full text-sm font-medium mb-6 inline-flex items-center justify-center"
+          >
+            <span className="animate-pulse mr-2">•</span>
+            YOUR BENEFITS ADVOCATE
           </div>
 
-          {/* About Text */}
-          <p className="text-white/80 max-w-2xl mx-auto text-sm sm:text-lg leading-relaxed">
-            {Aray[current].about}
-          </p>
+          {/* Title */}
+          <div className="mb-8">
+            <h1
+              data-aos="fade-up"
+              data-aos-delay="200"
+              className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight"
+            >
+              {services[current].name}
+            </h1>
+          </div>
+
+          {/* Description */}
+          <div className="mt-6">
+            <p
+              data-aos="fade-up"
+              data-aos-delay="300"
+              className="text-xl text-white/95 font-light leading-relaxed max-w-2xl mx-auto mb-8"
+            >
+              {services[current].about}
+            </p>
+          </div>
+
+          {/* Sub-description */}
+          <div className="mt-4">
+            <p
+              data-aos="fade-up"
+              data-aos-delay="400"
+              className="text-lg text-white/90 leading-relaxed max-w-2xl mx-auto mb-10"
+            >
+              Sit back, relax, and let us handle everything. No stress, no endless forms, no waiting on hold.
+            </p>
+          </div>
 
           {/* Buttons */}
-          <div className="mt-8 sm:mt-12 flex justify-center gap-6">
-      <Link to="/contact" >      <button className="px-6 py-2 cursor-pointer font-semibold bg-[#5E9EA8] text-white rounded-full hover:bg-[#4c8c92] transition">
-              Get Consultation
-            </button></Link>
-        <Link to="/contact">    <button className="px-6 py-2 font-semibold cursor-pointer border border-white text-white rounded-full hover:bg-white hover:text-black transition">
-              About Us
-            </button></Link>
+          <div className="mt-8 flex flex-col sm:flex-row justify-center gap-4">
+            <Link to="/contact">
+              <button className="bg-white text-[#5E9EA8] px-8 py-3 rounded-lg font-semibold hover:bg-gray-50 transition-colors duration-300 text-sm sm:text-base">
+                Free Consultation
+              </button>
+            </Link>
+            <Link to="/services">
+              <button className="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-[#5E9EA8] transition-colors duration-300 text-sm sm:text-base">
+                View All Services
+              </button>
+            </Link>
           </div>
 
           {/* Carousel Indicators */}
-          <div className="flex justify-center gap-3 mt-10">
-            {Aray.map((_, index) => (
-              <div
+          <div className="flex justify-center gap-3 mt-12">
+            {services.map((_, index) => (
+              <button
                 key={index}
                 onClick={() => setCurrent(index)}
-                className={`w-3 h-3 rounded-full cursor-pointer transition-all ${
-                  current === index ? "bg-[#5E9EA8] scale-110" : "bg-gray-400"
+                className={`w-3 h-3 rounded-full transition-all ${
+                  current === index ? "bg-white scale-110" : "bg-white/50"
                 }`}
-              ></div>
+                aria-label={`Go to slide ${index + 1}`}
+              />
             ))}
+          </div>
+
+          {/* Contact Info */}
+          <div 
+            data-aos="fade-up"
+            data-aos-delay="500"
+            className="mt-8 text-white/80 text-sm"
+          >
+            <p>Call today: <strong>+1 (718) 757-6928</strong></p>
           </div>
         </div>
       </div>
@@ -127,4 +149,4 @@ const Hero = () => {
   );
 };
 
-export default Hero;
+export default ServicesHero;
