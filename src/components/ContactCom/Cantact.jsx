@@ -50,8 +50,8 @@ const Contact = () => {
 
     try {
       await emailjs.send(
-        "service_0gnln6l", 
-        "template_m1lq3vr", 
+        "service_0gnln6l",
+        "template_m1lq3vr",
         {
           name: formData.name,
           email: formData.email,
@@ -60,7 +60,7 @@ const Contact = () => {
           message: formData.message,
           time: new Date().toLocaleString(),
         },
-        "44F19eKvZXO5ilpy8" 
+        "44F19eKvZXO5ilpy8"
       );
 
       setFormStatus({ submitting: false, submitted: true, error: null });
@@ -291,11 +291,13 @@ const Contact = () => {
                 <div className="flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 bg-[#5E9EA8]/10 rounded-full">
                   <info.icon className="w-6 h-6 sm:w-7 sm:h-7 text-[#5E9EA8] group-hover:text-[#4A8D99] transition-colors duration-300" />
                 </div>
-                <div className="text-left">
+                <div className="text-left max-w-[300px] break-all">
+                  {" "}
+                  {/* Adjust as needed */}
                   <h3 className="font-semibold text-gray-800 text-sm sm:text-base">
                     {info.title}
                   </h3>
-                  <p className="text-gray-600 text-xs sm:text-sm mt-1">
+                  <p className="text-gray-600 text-xs sm:text-sm mt-1 ">
                     {info.text}
                   </p>
                 </div>

@@ -5,6 +5,8 @@ import Footer from "./components/common/Footer";
 import Home from "./pages/Home";
 import About from "./Pages/About";
 import Services from "./Pages/Services";
+
+
 import Contact from "./components/ContactCom/Cantact";
 import Blogs from "./Pages/Blogs";
 import BlogDetail from "./components/Blogs/BlogDetail";
@@ -29,9 +31,14 @@ const router = createBrowserRouter([
     element: <MainLayout />,
     children: [
       { path: "/", element: <Home /> },
+
+      // ✅ Both versions of About, Services, ContactPage & Contact included
       { path: "/about", element: <About /> },
       { path: "/services", element: <Services /> },
+
       { path: "/contact", element: <Contact /> },
+
+      // ✅ Blog pages
       { path: "/blogs", element: <Blogs /> },
       { path: "/blogDetail/:id", element: <BlogDetail /> },
       { path: "/privacy-policy", element: <PrivacyPolicy /> },

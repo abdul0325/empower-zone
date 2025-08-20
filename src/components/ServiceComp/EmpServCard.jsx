@@ -65,6 +65,13 @@ const ServCard = [
 ];
 
 const EmpServCard = () => {
+    useEffect(()=>{
+        AOS.init({
+            duration:1000,
+            once:true,
+            offset:100,
+        })
+    })
   return (
     <div className="min-h-screen px-6 py-16 bg-white">
       <div className="max-w-6xl mx-auto">
